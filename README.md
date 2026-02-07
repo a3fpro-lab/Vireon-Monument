@@ -1,6 +1,5 @@
 # Vireon Monument — Version Alpha
 
-![monument-ci](https://github.com/a3fpro-lab/Vireon-Monument/actions/workflows/ci.yml/badge.svg)
 [![verify](https://github.com/a3fpro-lab/Vireon-Monument/actions/workflows/verify.yml/badge.svg)](https://github.com/a3fpro-lab/Vireon-Monument/actions/workflows/verify.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
