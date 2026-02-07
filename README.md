@@ -1,6 +1,7 @@
 # Vireon Monument — Version Alpha
 
-[![verify](https://github.com/a3fpro-lab/Vireon-Monument/actions/workflows/verify.yml/badge.svg)](https://github.com/a3fpro-lab/Vireon-Monument/actions/workflows/verify.yml)
+[![monument-ci](../../actions/workflows/monument-ci.yml/badge.svg)](../../actions/workflows/monument-ci.yml)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 [![Stars](https://img.shields.io/github/stars/a3fpro-lab/Vireon-Monument?style=social)](https://github.com/a3fpro-lab/Vireon-Monument/stargazers)
