@@ -3,8 +3,8 @@
 This index is the canonical entry point for the Monument theorem stack.
 
 **Convention**
-- Each theorem lives in `THEOREMS/NNN_<SLUG>/README.md` or `THEOREMS/NNN-<slug>/README.md` depending on the folder already committed.
-- The ID `NNN` is permanent once assigned.
+- Each theorem lives under `THEOREMS/` in its own folder.
+- The numeric ID (001, 002, …) is permanent once assigned.
 - “Fold” = the function/action, “folding” = the process, “folded” = the final state.
 
 ---
