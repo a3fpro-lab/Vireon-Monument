@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+title: "The VIREON Monument"
+message: "If you use this work, please cite it."
+type: software
+version: "alpha"
+date-released: 2026-02-07
+authors:
+  - family-names: "Dodge-Song"
+    given-names: "Inkwon"
+    name-suffix: "Jr."
+  - name: "The Architects"
+license: Apache-2.0
+repository-code: "https://github.com/a3fpro-lab/Vireon-Monument"
