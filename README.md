@@ -1,10 +1,4 @@
-Step 19 — Make the repo “monument-level” on the front page (README you paste once)
 
-Where to paste
-
-GitHub → open README.md → Edit → replace everything with the following.
-
-Paste this README (no placeholders, Alpha-ready)
 
 # Vireon Monument — Version Alpha
 
