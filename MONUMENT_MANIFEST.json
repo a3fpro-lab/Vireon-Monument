@@ -1,0 +1,36 @@
+{
+  "schema": "vireon_monument_manifest_v1",
+  "monument_name": "Vireon Monument",
+  "version": "alpha",
+  "license": "Apache-2.0",
+  "authors": ["The Architects"],
+  "principles": [
+    "no placeholders",
+    "copy-paste reproducible",
+    "proof-first structure",
+    "every theorem pack must include definitions, theorem, proof, and verification boundary"
+  ],
+  "packs": [
+    {
+      "pack_id": "00_PROOFPACK_INTEGRITY",
+      "title": "ProofPack Integrity Theorem",
+      "status": "alpha",
+      "path": "THEOREMS/00_PROOFPACK_INTEGRITY/README.md",
+      "claims": [
+        "history non-rewriteability via row chaining",
+        "artifact/checkpoint non-substitutability via sha256 binding",
+        "certificate non-forgery under deterministic derivation replay"
+      ]
+    }
+  ],
+  "required_pack_files": [
+    "README.md"
+  ],
+  "required_pack_sections": [
+    "Definitions",
+    "Theorem",
+    "Proof",
+    "Practical Meaning",
+    "Verification Boundary"
+  ]
+}
