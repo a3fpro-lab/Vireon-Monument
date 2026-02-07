@@ -1,0 +1,29 @@
+name: monument-ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 1) Hard fail if placeholder/template text leaks into real entries
+      - name: No TEMPLATE placeholders
+        run: |
+          if grep -RIn --exclude-dir=THEOREMS/000_TEMPLATE_MONUMENT_ENTRY "TEMPLATE" THEOREMS 2>/dev/null; then
+            echo "FAIL: placeholder text found in THEOREMS/"
+            exit 1
+          fi
+          if grep -RIn "TEMPLATE" THEOREMS/INDEX.md 2>/dev/null; then
+            echo "FAIL: placeholder text found in THEOREMS/INDEX.md"
+            exit 1
+          fi
+
+      # 2) Basic structure check (prevents empty/forgotten folders)
+      - name: Required files exist
+        run: |
+          test -f THEOREMS/INDEX.md
+          test -d THEOREMS
