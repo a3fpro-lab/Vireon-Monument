@@ -30,6 +30,8 @@ This repo includes a manifest system:
 - `tools/make_manifest.py` generates `PROOFPACK/MANIFEST.json`
 - `tools/verify_manifest.py` verifies every file hash listed in the manifest
 
+
+- Theorems Index: `THEOREMS/INDEX.md`
 This makes the repository state *audit-friendly* and *tamper-evident*.
 
 ---
