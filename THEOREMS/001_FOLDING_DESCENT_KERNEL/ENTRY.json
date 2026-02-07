@@ -1,0 +1,11 @@
+{
+  "schema": "vireon_monument_entry_v1",
+  "id": "001",
+  "title": "The Folding Descent Kernel",
+  "status": "alpha",
+  "license": "Apache-2.0",
+  "authors": ["The Architects"],
+  "created_utc": "2026-02-07T00:00:00Z",
+  "tags": ["descent", "lyapunov", "fixed-point", "kernel", "proof-carrying"],
+  "summary": "A minimal, auditable descent certificate for iterative folds x_{k+1}=T(x_k), yielding summable progress and asymptotic stationarity. This is the base engine behind VIREON-style certified training and certified inference folds."
+}
