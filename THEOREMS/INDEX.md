@@ -2,23 +2,10 @@
 
 This index is the canonical entry point for the Monument theorem stack.
 
-## Convention
-- Each theorem lives in `THEOREMS/<folder>/README.md`.
-- The numeric ID is permanent once assigned.
+**Convention**
+- Each theorem lives in `THEOREMS/NNN_<SLUG>/README.md` or `THEOREMS/NNN-<slug>/README.md` depending on the folder already committed.
+- The ID `NNN` is permanent once assigned.
 - “Fold” = the function/action, “folding” = the process, “folded” = the final state.
-
----
-
-## Templates and System Files (not a theorem)
-
-- **000 — Monument Template (scaffold only)**  
-  Folder: `THEOREMS/000_TEMPLATE_MONUMENT_E.../`  
-  Purpose: Reusable structure for new theorem entries (format, metadata, proof skeleton).
-
-- **00 — Proofpack Integrity (system spec / audit layer)**  
-  Folder: `THEOREMS/00_PROOFPACK_INTEGRITY/`  
-  Purpose: The audit-grade rules of the repository (hashing, manifests, replay semantics).  
-  Note: This is the *system contract*, not a theorem entry.
 
 ---
 
@@ -26,8 +13,7 @@ This index is the canonical entry point for the Monument theorem stack.
 
 - **001 — The Folding Descent Kernel (VIREON Base Certificate)**  
   Folder: `THEOREMS/001_FOLDING_DESCENT_KERNEL/`  
-  What it is: The minimal descent certificate: (K)+(LB) ⇒ monotone energy drop, summable progress, progress→0, and a finite-budget best-iterate bound.  
-  Entry: `THEOREMS/001_FOLDING_DESCENT_KERNEL/README.md`
+  What it is: The minimal descent certificate: (K)+(LB) ⇒ monotone energy drop, summable progress, progress→0, and a finite-budget best-iterate bound.
 
 ---
 
@@ -35,8 +21,7 @@ This index is the canonical entry point for the Monument theorem stack.
 
 - **002 — Expected Descent Under Stochastic Folding (SGD / AdamW Certificate)**  
   Folder: `THEOREMS/002-expected-stochastic-descent/`  
-  What it is: Expected version of the kernel for stochastic folds (e.g., SGD-style updates), yielding convergence to a noise floor under bounded variance + smoothness-type assumptions.  
-  Entry: `THEOREMS/002-expected-stochastic-descent/README.md`
+  What it is: Expected version of the kernel for stochastic folds (e.g., SGD-style updates), yielding convergence to a noise floor under bounded variance + smoothness-type assumptions.
 
 ---
 
@@ -44,13 +29,11 @@ This index is the canonical entry point for the Monument theorem stack.
 
 - **003 — Anytime-Valid PAC Gate (Horizon-Free Certified Updates)**  
   Folder: `THEOREMS/003-anytime-valid-pac-gate/`  
-  What it is: A horizon-free certification gate using anytime-valid confidence sequences (via α-spending) so long runs don’t suffer the α/10,000 “death spiral.”  
-  Entry: `THEOREMS/003-anytime-valid-pac-gate/README.md`
+  What it is: A horizon-free certification gate using anytime-valid confidence sequences (via α-spending) so long runs don’t suffer the α/10,000 “death spiral.”
 
 - **004 — Derivation Integrity (Replay-Correct Certificates)**  
   Folder: `THEOREMS/004-derivation-integrity-replay/`  
-  What it is: Prevents certificate fabrication by binding (i) raw artifacts, (ii) derivation code hash, and (iii) verifier replay with exact-match checks.  
-  Entry: `THEOREMS/004-derivation-integrity-replay/README.md`
+  What it is: Prevents certificate fabrication by binding (i) raw artifacts, (ii) derivation code hash, and (iii) verifier replay with exact-match checks.
 
 ---
 
