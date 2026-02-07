@@ -27,9 +27,7 @@ This index is the canonical entry point for the Monument theorem stack.
 
 ## Correspondence / Inversion Layer (Generative Reconstruction)
 
-- **003 — Correspondence Inversion as Energy-Coupled Folding (Diffusion / Score Models)**  
-  Folder: `THEOREMS/003-correspondence-inversion/`  
-  Status: queued (next)
+- **003 — Anytime-Valid PAC Gate (Horizon-Free Certified Updates)** → `003-anytime-valid-pac-gate/README.md`
 
 ---
 
