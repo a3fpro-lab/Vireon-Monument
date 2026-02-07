@@ -1,3 +1,9 @@
+[![verify](https://github.com/a3fpro-lab/Vireon-Monument/actions/workflows/verify.yml/badge.svg)](https://github.com/a3fpro-lab/Vireon-Monument/actions/workflows/verify.yml)
+[![update-manifest](https://github.com/a3fpro-lab/Vireon-Monument/actions/workflows/update-manifest.yml/badge.svg)](https://github.com/a3fpro-lab/Vireon-Monument/actions/workflows/update-manifest.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/a3fpro-lab/Vireon-Monument?include_prereleases=true)](https://github.com/a3fpro-lab/Vireon-Monument/releases)
+
+
 
 
 # Vireon Monument — Version Alpha
