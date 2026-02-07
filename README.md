@@ -1,3 +1,11 @@
+Step 19 — Make the repo “monument-level” on the front page (README you paste once)
+
+Where to paste
+
+GitHub → open README.md → Edit → replace everything with the following.
+
+Paste this README (no placeholders, Alpha-ready)
+
 # Vireon Monument — Version Alpha
 
 **Vireon Monument** is an open, proof-first repository: a growing foundation of *theorems, proofs, and verification artifacts* developed under the Vireon logic.
@@ -37,3 +45,43 @@ This makes the repository state *audit-friendly* and *tamper-evident*.
 ### A) Build the manifest
 ```bash
 python tools/make_manifest.py
+
+B) Verify the manifest
+
+python tools/verify_manifest.py
+
+If verification passes, your local working tree matches the cryptographic manifest.
+
+⸻
+
+CI (GitHub Actions)
+
+This repository runs an automated check on every push and pull request:
+	•	builds the manifest
+	•	verifies the manifest
+
+If anything is inconsistent, CI fails.
+
+⸻
+
+License
+
+Apache License 2.0 — see LICENSE.
+
+⸻
+
+Roadmap (Alpha)
+	•	Add a structured theorem directory and index
+	•	Add the first canonical proofpack(s) for:
+	•	Descent / progress certificates
+	•	PAC-certified improvement gates
+	•	Chain integrity + derivation integrity rules
+	•	Add a “monument index” that lists every theorem, its status, and its verification links
+
+⸻
+
+Integrity Statement
+
+This repo is not built for vibes.
+It is built for truth you can re-check.
+
