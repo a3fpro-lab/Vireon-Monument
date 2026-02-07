@@ -1,86 +1,59 @@
 # Vireon Monument — Version Alpha
 
-[![monument-ci](../../actions/workflows/monument-ci.yml)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![monument-ci](../../actions/workflows/monument-ci.yml/badge.svg)](../../actions/workflows/monument-ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-
 [![Stars](https://img.shields.io/github/stars/a3fpro-lab/Vireon-Monument?style=social)](https://github.com/a3fpro-lab/Vireon-Monument/stargazers)
-**Vireon Monument** is an open, proof-first repository: a growing foundation of *theorems, proofs, and verification artifacts* developed under the Vireon logic.
+
+**Vireon Monument** is an open, proof-first repository: a growing foundation of **theorems, proofs, and verification artifacts** engineered under the Vireon logic.
+
+**Start here:** [`THEOREMS/INDEX.md`](THEOREMS/INDEX.md)
+
+**Authors:** The Architects (Inkwon Song Jr. and collaborators)  
+**License:** Apache-2.0
+
+---
+
+## What this repository is
 
 This repo is built to be:
-- **Steel-core**: every claim lives beside a checkable artifact
-- **Tamper-evident**: proofpacks are hashed and tracked
-- **Reproducible**: anyone can re-run the verification on their own machine
-- **Open**: Apache-2.0 licensed for broad use and extension
 
-**Authors:** The Architects (Inkwon Song Jr. and collaborators)
+- **Steel-core** — every claim lives beside a checkable structure
+- **Tamper-evident** — changes are detectable (manifest + audit rules)
+- **Reproducible** — others can re-run checks and reach the same pass/fail outcome
+- **Open** — Apache-2.0 for broad use, extension, and downstream integration
+
+This is **not** a vibes repo.  
+It is a repository for truth you can re-check.
 
 ---
 
-## What’s in this repo
+## Structure
 
-### 1) Proof Library (Theorems + Proofs)
-A curated, structured set of documents containing:
-- Definitions and axioms
-- Theorems and proofs
-- Bridge theorems that connect to optimization, learning, and dynamical systems
-- “Kernel” structure: reusable proof patterns you can bind to real systems
+### 1) Theorems (Proof Library)
+All canonical entries live under:
 
-### 2) Proofpacks (Verification Artifacts)
-A **proofpack** is a directory-level evidence bundle that can be independently verified.
+- `THEOREMS/NNN-<slug>/README.md`
+- `THEOREMS/INDEX.md` is the canonical entry point
 
-This repo includes a manifest system:
-- `tools/make_manifest.py` generates `PROOFPACK/MANIFEST.json`
+Each theorem entry is intended to be:
+- clearly stated
+- proven (or explicitly marked as queued/draft)
+- linked to what it binds to (optimization, learning, certificates, etc.)
+
+### 2) Proofpack / Integrity Tooling
+This repository includes tooling to make tampering detectable via a cryptographic manifest:
+
+- `tools/make_manifest.py` builds `PROOFPACK/MANIFEST.json`
 - `tools/verify_manifest.py` verifies every file hash listed in the manifest
 
+This makes a repository state **audit-friendly**: anyone can confirm whether their checkout matches the recorded manifest.
 
-- Theorems Index: `THEOREMS/INDEX.md`
-This makes the repository state *audit-friendly* and *tamper-evident*.
+> Note: the Monument repo is intentionally docs-first. It is not required to be installable as a Python package.
 
 ---
 
-## Quickstart: Verify the repository state
+## Quickstart: Verify repository integrity
 
 ### A) Build the manifest
 ```bash
 python tools/make_manifest.py
-
-B) Verify the manifest
-
-python tools/verify_manifest.py
-
-If verification passes, your local working tree matches the cryptographic manifest.
-
-⸻
-
-CI (GitHub Actions)
-
-This repository runs an automated check on every push and pull request:
-	•	builds the manifest
-	•	verifies the manifest
-
-If anything is inconsistent, CI fails.
-
-⸻
-
-License
-
-Apache License 2.0 — see LICENSE.
-
-⸻
-
-Roadmap (Alpha)
-	•	Add a structured theorem directory and index
-	•	Add the first canonical proofpack(s) for:
-	•	Descent / progress certificates
-	•	PAC-certified improvement gates
-	•	Chain integrity + derivation integrity rules
-	•	Add a “monument index” that lists every theorem, its status, and its verification links
-
-⸻
-
-Integrity Statement
-
-This repo is not built for vibes.
-It is built for truth you can re-check.
-
