@@ -1,1 +1,154 @@
-keep
+# ProofPack 00 — Integrity Theorem (Alpha)
+
+This ProofPack formalizes the integrity guarantees behind a “proof-carrying” evidence pack:
+an append-only ledger of updates, each update bound to raw artifacts and checkpoints by hashes,
+with a verifier that replays the certificate derivation deterministically.
+
+---
+
+## Definitions
+
+### D1 — Evidence Pack (Pack)
+A **Pack** is a directory containing:
+- `run.json` (run configuration, including the certificate derivation config),
+- `updates.jsonl` (append-only sequence of update rows),
+- `artifacts/` (raw samples used to compute the certificate fields),
+- `checkpoints/` (model snapshots referenced by update rows),
+- optionally `sha256sum.txt`, `manifest.json`, and a signature block.
+
+### D2 — Canonical encoding
+For any JSON object `J`, define `canon(J)` as its canonical JSON byte encoding:
+- keys sorted,
+- separators fixed,
+- UTF-8 bytes.
+
+(Any deterministic canonical encoding works; this just fixes the idea.)
+
+### D3 — Row hash and chain hash
+Each update row `r_k` contains:
+- `prev_row_hash` (a hex digest),
+- `row_hash` (a hex digest).
+
+Define:
+
+- `H_run = sha256(run.json bytes)`  
+- `row_hash(r_k) = sha256(canon(r_k without row_hash))`
+
+**Genesis rule:** `prev_row_hash(r_1) = H_run`  
+**Chain rule:** `prev_row_hash(r_k) = row_hash(r_{k-1})` for all `k ≥ 2`.
+
+### D4 — Artifact binding
+Each row `r_k` references raw artifact files (example names):
+- `artifact_deltaL_path`, `artifact_eps_path`, `artifact_kl_path`,
+and includes their hashes:
+- `artifact_deltaL_sha256`, etc.
+
+An artifact file is **bound** if the hash in the row equals `sha256(file_bytes)`.
+
+### D5 — Checkpoint binding + lineage
+Each row `r_k` references:
+- `theta_old_path` with hash `theta_old_sha256`,
+- `theta_try_path` with hash `theta_try_sha256`.
+
+A checkpoint is **bound** if the hash matches file bytes.
+
+**Lineage rule (accept/reject):**
+- if row `k` is accepted, then the next row must start from `theta_try_sha256(k)`,
+- if row `k` is rejected, the next row must start from `theta_old_sha256(k)`.
+
+(Exact policy is up to the engine; the key is that the verifier enforces it.)
+
+### D6 — Deterministic certificate derivation (Derivation integrity)
+Let `Derive(cfg, artifacts)` be a deterministic function that maps:
+- configuration from `run.json`,
+- raw artifact sample files referenced by the row,
+to a structured certificate result object `pac_k` (or “certificate fields”).
+
+A row has **derivation integrity** if the logged certificate fields equal the verifier’s recomputation from the referenced artifacts under the same config, up to tolerance.
+
+---
+
+## Theorem — ProofPack Integrity
+
+### Theorem T00 (Integrity of chained, replayable ProofPacks)
+Assume a Pack satisfies:
+
+1. **Chain rule** (D3) holds for every row and `row_hash` matches its recomputation.
+2. **Artifact binding** (D4) holds for every row’s referenced artifacts.
+3. **Checkpoint binding** (D5) holds for every row’s referenced checkpoints.
+4. **Lineage rule** (D5) holds across rows.
+5. **Derivation integrity** (D6): for every row, the verifier recomputation equals the logged certificate fields.
+
+Then:
+
+A. (**History non-rewriteability**) Any deletion, insertion, or reordering of rows in `updates.jsonl`
+causes verification failure.
+
+B. (**Non-substitutability**) Any modification or replacement of a referenced artifact or checkpoint file
+causes verification failure (unless the row content is changed accordingly, which breaks (A)).
+
+C. (**No fake certificates**) If `Derive` is deterministic and the verifier recomputes it, then the certificate values in a verified pack are exactly the values obtained from the bound raw artifacts under the recorded configuration.
+
+---
+
+## Proof
+
+### Proof of A (History non-rewriteability)
+The chain starts from `H_run` and each row includes `prev_row_hash` that must equal the previous row’s `row_hash`.
+
+- If a row is deleted, some later row’s `prev_row_hash` will no longer match the actual preceding row hash.
+- If a row is inserted, the inserted row must set `prev_row_hash` correctly, but then the next row’s `prev_row_hash` becomes wrong unless it is rewritten; rewriting it changes its `row_hash`, breaking the chain forward.
+- If rows are reordered, the `prev_row_hash` linkage fails at the first out-of-order adjacency.
+
+Thus any delete/insert/reorder breaks the chain and fails verification.
+
+### Proof of B (Non-substitutability)
+Each row includes the SHA-256 hash of the bytes of every referenced artifact/checkpoint.
+
+If any referenced file is modified or swapped, its SHA-256 changes with overwhelming probability.
+The verifier recomputes the file hash and detects a mismatch.
+
+Could an attacker modify both the file and the row hash to match?
+They would need to rewrite the row contents; that changes `row_hash` and breaks the chain forward,
+so verification fails by part (A).
+
+### Proof of C (No fake certificates)
+Each row’s certificate fields are recomputed by the verifier using `Derive(run_cfg, artifacts)`.
+
+Because (B) enforces that artifacts are exactly the ones hashed in the row, and (A) enforces that the row content cannot be rewritten without breaking the chain, the verifier recomputation must match the logged certificate fields (by assumption (5)).
+
+Therefore, a verified pack cannot contain a certificate value that is inconsistent with the bound artifacts and recorded config.
+
+∎
+
+---
+
+## Practical Meaning
+
+If a pack verifies:
+
+- You cannot rewrite the update history without detection.
+- You cannot swap artifacts or checkpoints without detection.
+- You cannot claim a “good certificate” unless the raw artifacts truly produce that certificate under the recorded derivation config.
+
+This makes the pack **audit-grade**: an external party can replay the certificate derivation from raw samples.
+
+---
+
+## Verification Boundary (What this does NOT guarantee)
+
+This theorem does **not** claim:
+
+1. That the raw artifacts themselves reflect a “truthful” environment interaction (a compromised trainer could log garbage samples consistently).
+2. That the policy update is globally optimal or convergent in deep nonconvex spaces.
+3. That SHA-256 provides authenticity (who created it) — only integrity. Authenticity requires signatures and key management.
+
+This ProofPack guarantees **internal, replayable integrity** of the record — not that the world feeding the record was honest.
+
+---
+
+## Status
+Alpha. Next upgrades (as separate ProofPacks):
+- signatures & provenance (authenticity),
+- stronger artifact formats (efficiency),
+- statistical validity details (confidence sequence choices, assumptions, sample complexity).
