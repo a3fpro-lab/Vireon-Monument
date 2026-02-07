@@ -28,6 +28,7 @@ If a claim can be executed, it ships with a proofpack. If not, it ships as a the
 3. `Vireon-Proofpacks`: reference implementation + demo environments (starting with CartPole)
 4. Releases: tagged versions with reproducible verification reports
 
+
 ## License
 
-MIT (unless a specific sub-repo states otherwise).
+Apache-2.0
