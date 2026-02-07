@@ -1,6 +1,7 @@
 name: monument-ci
 
 on:
+  workflow_dispatch:
   push:
   pull_request:
 
@@ -13,11 +14,19 @@ jobs:
       # 1) Hard fail if placeholder/template text leaks into real entries
       - name: No TEMPLATE placeholders
         run: |
-          if grep -RIn --exclude-dir=THEOREMS/000_TEMPLATE_MONUMENT_ENTRY "TEMPLATE" THEOREMS 2>/dev/null; then
-            echo "FAIL: placeholder text found in THEOREMS/"
+          set -euo pipefail
+
+          # Scan THEOREMS/ but exclude the template folder and the index itself
+          if grep -RIn \
+            --exclude-dir=000_TEMPLATE_MONUMENT_ENTRY \
+            --exclude=INDEX.md \
+            "TEMPLATE" THEOREMS; then
+            echo "FAIL: placeholder text found in real theorem entries."
             exit 1
           fi
-          if grep -RIn "TEMPLATE" THEOREMS/INDEX.md 2>/dev/null; then
+
+          # Separately scan the index (clear error message)
+          if grep -In "TEMPLATE" THEOREMS/INDEX.md; then
             echo "FAIL: placeholder text found in THEOREMS/INDEX.md"
             exit 1
           fi
@@ -25,5 +34,6 @@ jobs:
       # 2) Basic structure check (prevents empty/forgotten folders)
       - name: Required files exist
         run: |
-          test -f THEOREMS/INDEX.md
+          set -euo pipefail
           test -d THEOREMS
+          test -f THEOREMS/INDEX.md
