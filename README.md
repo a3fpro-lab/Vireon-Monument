@@ -1,30 +1,84 @@
-# VIREON Monument (Alpha)
+# Vireon Monument — Version Alpha
 
-**A public, auditable foundation of theorems, proofs, and verification artifacts built under the VIREON logic.**
+**A proof-first, audit-first repository of foundational theorems and certification systems touched by the Vireon framework.**
 
-This repository is a *monument* — not a blog. Everything here is designed to be:
-- **Proof-first** (theorem → proof → assumptions → corollaries)
-- **Verifiable** (where possible: code, reproducibility notes, and checklists)
-- **Tamper-evident** (hashes / manifests for artifacts when included)
-- **Open** (Apache-2.0)
+This repo is built as a **steel foundation**:
+- Every theorem has a statement, definitions, proof, and assumptions.
+- Every “engine” is reproducible and verifiable.
+- Every claim is either proven, bounded by a certificate, or explicitly marked as conjecture.
 
-## Structure
+## What This Repository Is
 
-- `FOUNDATIONS/` — the core axioms, definitions, and kernel theorems
-- `THEOREMS/` — one folder per theorem (statement, proof, notes, references)
-- `BINDINGS/` — modern bindings (transformers, diffusion, RL certification, etc.)
-- `PROOFPACKS/` — reproducible artifact packs (manifests + verification scripts)
-- `TOOLS/` — helpers to build manifests, verify packs, lint proofs, and run checks
+Vireon Monument is a **public archive of foundations**:
+- a structured library of theorems and proofs,
+- proofpacks (tamper-evident evidence bundles),
+- and verification engines that replay and certify what happened.
 
-## How to cite
+This is not “ideas.” This is **formal structure**.
 
-See `CITATION.cff`.
+## The Prime Rule
 
-## Status
+If it cannot be:
+1) defined,  
+2) proven, or  
+3) certified with replayable artifacts,  
 
-**Version:** Alpha  
-**Standard:** Steel foundations only — no fluff, no handwaving.
+…it does not belong in the Monument.
+
+## Repository Structure
+
+This repo is organized into three permanent layers:
+
+### 1) `THEOREMS/`
+Theorems as atomic units:
+- definitions
+- statement
+- proof
+- corollaries
+- notes (scope + limits)
+- references (when applicable)
+
+### 2) `PROOFPACKS/`
+Each proofpack is a self-contained evidence bundle:
+- append-only ledger(s)
+- chained hash history
+- artifact hashes
+- manifests / checksums
+- replayable verification
+
+### 3) `ENGINES/`
+Verification engines that:
+- generate proofpacks
+- verify proofpacks
+- reproduce certificates deterministically
+
+## Current Focus (Alpha)
+
+**Alpha is about locking the base:**
+- a minimal theorem template
+- an auditable proofpack template
+- and at least one working engine that produces + verifies a proofpack end-to-end
+
+Once the base is stable, we expand the library.
+
+## How To Contribute (Strict)
+
+This is not a casual contribution repo.
+
+If you add a theorem:
+- it must compile cleanly (if LaTeX),
+- proofs must be complete and internally consistent,
+- assumptions must be explicit.
+
+If you add an engine:
+- it must be replayable,
+- must produce deterministic outputs,
+- must have a verifier that detects tampering.
 
 ## License
 
-Apache-2.0 (see `LICENSE`).
+Apache-2.0. See `LICENSE` and `NOTICE`.
+
+---
+
+**The Architects**
