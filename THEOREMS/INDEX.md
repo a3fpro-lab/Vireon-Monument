@@ -33,9 +33,7 @@ This index is the canonical entry point for the Monument theorem stack.
 
 ## Retrieval / Memory Layer (Hopfield / Attention)
 
-- **004 — Hopfield Retrieval as Monotone Energy Descent (Attention Binding)**  
-  Folder: `THEOREMS/004-hopfield-retrieval-descent/`  
-  Status: queued (next)
+- **004 — Derivation Integrity (Replay-Correct Certificates)** → `004-derivation-integrity-replay/README.md`
 
 ---
 
