@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vireon-monument"
+version = "0.1.0"
+description = "Vireon Monument: proof-indexed theorem vault and audit-grade documentation stack."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [{name = "The Architects"}]
+dependencies = []
