@@ -6,6 +6,9 @@
 
 **Vireon Monument** is an open, proof-first repository: a growing foundation of **theorems, proofs, and verification artifacts** engineered under the Vireon logic.
 
+**Engine (rules of the Monument):** `ENGINES/ENGINE.md`  
+**Theorems Index (canonical registry):** `THEOREMS/INDEX.md`
+
 **Start here:** [`THEOREMS/INDEX.md`](THEOREMS/INDEX.md)
 
 **Authors:** The Architects (Inkwon Song Jr. and collaborators)  
