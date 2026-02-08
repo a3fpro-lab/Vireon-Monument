@@ -1,0 +1,11 @@
+{
+  "schema": "vireon_proofpack_scope_v1",
+  "proofpack_id": "PP001_KERNEL_ALPHA",
+  "theorem_id": "001",
+  "targets": [
+    "THEOREMS/001-folding-descent-kernel/README.md",
+    "THEOREMS/INDEX.md",
+    "ENGINES/ENGINE.md"
+  ],
+  "created_note": "Alpha proofpack: integrity closure over core kernel definition."
+}
