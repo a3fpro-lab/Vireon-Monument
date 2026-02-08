@@ -1,4 +1,5 @@
 # Vireon Monument — Theorems Index
+**Monument Engine (rules):** `../ENGINES/ENGINE.md`
 
 This index is the canonical entry point for the Monument theorem stack.
 
