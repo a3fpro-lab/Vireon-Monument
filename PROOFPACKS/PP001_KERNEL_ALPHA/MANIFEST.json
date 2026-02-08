@@ -1,0 +1,7 @@
+{
+  "schema": "vireon_manifest_v1",
+  "created_utc": "REPLACE_BY_TOOL",
+  "root": "PP001_KERNEL_ALPHA",
+  "files": [],
+  "note": "Run tools/make_manifest.py to populate file hashes."
+}
