@@ -10,4 +10,4 @@ A theorem entry is Monument-grade only if:
 - [ ] Theorem statement explicit
 - [ ] Proof included (or clearly labeled “Proof Sketch”)
 - [ ] Operational meaning included (what it certifies / how to use)
-- [ ] No placeholder words (“TEMPLATE”, “TODO”, “lorem”, “fill in”, etc.)
+- [ ] No placeholder words (“PLACEHOLDER”, “TODO”, “lorem”, “fill in”, etc.)
