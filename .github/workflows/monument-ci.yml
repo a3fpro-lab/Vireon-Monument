@@ -1,0 +1,40 @@
+name: monument-ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 1) Hard fail if placeholder/template text leaks into real entries
+      - name: No TEMPLATE placeholders
+        run: |
+          if grep -RIn --exclude-dir=THEOREMS/000_TEMPLATE_MONUMENT_ENTRY "TEMPLATE" THEOREMS 2>/dev/null; then
+            echo "FAIL: placeholder text found in THEOREMS/"
+            exit 1
+          fi
+
+      # 2) Required files exist
+      - name: Required files exist
+        run: |
+          test -d THEOREMS
+          test -f THEOREMS/INDEX.md
+          test -d PROOFPACK
+
+      # 3) Proofpack manifest must exist
+      - name: Proofpack manifest exists
+        run: |
+          test -f PROOFPACK/MANIFEST.json
+
+      # 4) Verify proofpack manifest integrity
+      - name: Verify proofpack manifest
+        run: |
+          python tools/verify_manifest.py
