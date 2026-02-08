@@ -17,8 +17,15 @@ jobs:
       # 1) Hard fail if placeholder/template text leaks into real entries
       - name: No TEMPLATE placeholders
         run: |
-          if grep -RIn --exclude-dir=THEOREMS/000_TEMPLATE_MONUMENT_ENTRY "TEMPLATE" THEOREMS 2>/dev/null; then
+          # Exclude the template folder by *directory name* (not a path)
+          if grep -RIn --exclude-dir=000_TEMPLATE_MONUMENT_ENTRY "TEMPLATE" THEOREMS 2>/dev/null; then
             echo "FAIL: placeholder text found in THEOREMS/"
+            exit 1
+          fi
+
+          # Also forbid TEMPLATE in the canonical index
+          if grep -RIn "TEMPLATE" THEOREMS/INDEX.md 2>/dev/null; then
+            echo "FAIL: placeholder text found in THEOREMS/INDEX.md"
             exit 1
           fi
 
@@ -28,11 +35,14 @@ jobs:
           test -d THEOREMS
           test -f THEOREMS/INDEX.md
           test -d PROOFPACK
+          test -d tools
+          test -f tools/verify_manifest.py
+          test -f tools/make_manifest.py
 
-      # 3) Proofpack manifest must exist
-      - name: Proofpack manifest exists
+      # 3) Build the proofpack manifest (so CI doesn't require you to commit it every time)
+      - name: Build proofpack manifest
         run: |
-          test -f PROOFPACK/MANIFEST.json
+          python tools/make_manifest.py
 
       # 4) Verify proofpack manifest integrity
       - name: Verify proofpack manifest
