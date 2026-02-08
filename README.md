@@ -1,13 +1,13 @@
 # Vireon Monument — Version Alpha
 
-[![monument-ci](../../actions/workflows/monument-ci.yml/badge.svg)](../../actions/workflows/monument-ci.yml)
+[![monument-ci](https://github.com/a3fpro-lab/Vireon-Monument/actions/workflows/monument-ci.yml/badge.svg)](https://github.com/a3fpro-lab/Vireon-Monument/actions/workflows/monument-ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Stars](https://img.shields.io/github/stars/a3fpro-lab/Vireon-Monument?style=social)](https://github.com/a3fpro-lab/Vireon-Monument/stargazers)
 
-**Vireon Monument** is an open, proof-first repository: a growing foundation of **theorems, proofs, and verification artifacts** engineered under the Vireon logic.
+**Vireon Monument** is an open, proof-first repository: a growing foundation of **theorems, proofs, and verification artifacts** engineered under Vireon logic.
 
-**Engine (rules of the Monument):** `ENGINES/ENGINE.md`  
-**Theorems Index (canonical registry):** `THEOREMS/INDEX.md`
+**Engine (rules of the Monument):** [`ENGINES/ENGINE.md`](ENGINES/ENGINE.md)  
+**Theorems Index (canonical registry):** [`THEOREMS/INDEX.md`](THEOREMS/INDEX.md)
 
 **Start here:** [`THEOREMS/INDEX.md`](THEOREMS/INDEX.md)
 
